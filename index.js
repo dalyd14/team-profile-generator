@@ -193,7 +193,7 @@ const createHTML = membersList => {
             <div class="content-background">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${member.getId()}</li>
-                    <li class="list-group-item">Email: ${member.getEmail()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></li>
                     <li class="list-group-item">Email: ${getThirdDetail(member)}</li>
                 </ul>
             </div>
@@ -224,7 +224,7 @@ const getThirdDetail = (member) => {
         case "Manager":
             return member.getOfficeNumber()
         case "Engineer":
-            return member.getGithub()
+            return `<a href="https://github.com/${member.getGithub()}" target="_blank">${member.getGithub()}</a>`
         case "Intern":
             return member.getSchool()
         default:
