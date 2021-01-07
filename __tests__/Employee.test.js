@@ -8,3 +8,12 @@ test('creates a new employee object', () => {
     expect(employee.email).toBe('dalyd14@gmail.com')
     expect(employee.id).toBe(1)
 })
+
+test('get values returned from employee class', () => {
+    const employee = new Employee('Dave', 'dalyd14@gmail.com', 1)
+
+    expect(employee.getName()).toBe('Dave')
+    expect(employee.getEmail()).toBe('dalyd14@gmail.com')
+    expect(employee.getId()).toBe(1)
+    expect(employee.getRole()).toBe('Employee')
+})
