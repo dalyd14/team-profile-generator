@@ -10,6 +10,7 @@ const employeeRepository = [
     new Manager('Brian Spears', 'bs@gmail.com', 78, 41),
     new Engineer('David Daly', 'dd@gmail.com', 45, 'dalyd14'),
     new Engineer('PJ Taya', 'PT@gmail.com', 63, 'pj13'),
+    new Engineer('Michel Skura', 'skuyra@gmail.com', 53, 'ms13'),
     new Intern('Matt Nutley', 'mn@gmail.com', 48, 'Alabama')
 ]
 
@@ -184,7 +185,7 @@ const createHTML = membersList => {
 
     membersList.forEach(member => {
         const memberCard = `
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <div class="card-body bg-primary text-white">
                 <h5 class="card-title">${member.getName()}</h5>
                 <p class="card-text">${getIcon(member)} ${member.getRole()}</p>
