@@ -1,0 +1,11 @@
+header {
+    height: 170px;
+    background-color: #E84756;
+}
+.content-background {
+    padding: 15px 10px;
+    background-color: #F6F7F9;
+}
+.content-background ul {
+    border: solid 1px rgba(0, 0, 0, 0.125);
+}

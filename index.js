@@ -181,29 +181,66 @@ const nextMember = (answer) => {
 /////////////////////////////////////////////////////////////////////////////////////////////
 const createHTML = membersList => {
     let htmlString = []
-    //htmlString.push(htmlParts.topHalf)
 
     membersList.forEach(member => {
-        const memberCard = `<div class="card" style="width: 18rem;">
-    <div class="card-body bg-primary text-white">
-        <h5 class="card-title">${member.getName()}</h5>
-        <p class="card-text">${member.getRole()}</p>
-    </div>
-    <div class="content-background">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">${member.getId()}</li>
-            <li class="list-group-item">${member.getEmail()}</li>
-        </ul>
-    </div>
-</div>`
+        const memberCard = `
+        <div class="card" style="width: 18rem;">
+            <div class="card-body bg-primary text-white">
+                <h5 class="card-title">${member.getName()}</h5>
+                <p class="card-text">${getIcon(member)} ${member.getRole()}</p>
+            </div>
+            <div class="content-background">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${member.getId()}</li>
+                    <li class="list-group-item">Email: ${member.getEmail()}</li>
+                    <li class="list-group-item">Email: ${getThirdDetail(member)}</li>
+                </ul>
+            </div>
+        </div>`
         htmlString.push(memberCard)
     });
 
     htmlString.push(htmlParts.bottomHalf)
 
-    fs.appendFile('./src/index.html', htmlString.join(''), err => {
+    fileManagement(htmlString)
+}
+
+const getIcon = (member) => {
+    switch (member.getRole()) {
+        case "Manager":
+            return `<i class="fas fa-mug-hot"></i>`
+        case "Engineer":
+            return `<i class="fas fa-tools"></i>`
+        case "Intern":
+            return `<i class="fas fa-user-graduate"></i>`
+        default:
+            break;
+    }
+}
+
+const getThirdDetail = (member) => {
+    switch (member.getRole()) {
+        case "Manager":
+            return member.getOfficeNumber()
+        case "Engineer":
+            return member.getGithub()
+        case "Intern":
+            return member.getSchool()
+        default:
+            break;
+    }
+}
+
+const fileManagement = htmlArr => {
+    fs.copyFile('./src/index.html', './dist/index.html', err => {
         if (err) throw err
-    })        
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
+            if (err) throw err
+            fs.appendFile('./dist/index.html', htmlArr.join(''), err => {
+                if (err) throw err
+            })              
+        }) 
+    })
 }
 
 // this starts the code by receiving input for the manager
