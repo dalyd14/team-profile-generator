@@ -185,15 +185,16 @@ const createHTML = membersList => {
 
     membersList.forEach(member => {
         const memberCard = `<div class="card" style="width: 18rem;">
-    <div class="card-body">
+    <div class="card-body bg-primary text-white">
         <h5 class="card-title">${member.getName()}</h5>
         <p class="card-text">${member.getRole()}</p>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">${member.getId()}</li>
-        <li class="list-group-item">${member.getEmail()}</li>
-        <li class="list-group-item">Filler</li>
-    </ul>
+    <div class="content-background">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${member.getId()}</li>
+            <li class="list-group-item">${member.getEmail()}</li>
+        </ul>
+    </div>
 </div>`
         htmlString.push(memberCard)
     });
