@@ -6,13 +6,14 @@ const htmlParts = require('./src/template')
 const fs = require('fs')
 
 // this array will hold all of the team members
-const employeeRepository = [
+const employeeRepository = []
+/*
     new Manager('Brian Spears', 'bs@gmail.com', 78, 41),
     new Engineer('David Daly', 'dd@gmail.com', 45, 'dalyd14'),
     new Engineer('PJ Taya', 'PT@gmail.com', 63, 'pj13'),
     new Engineer('Michel Skura', 'skuyra@gmail.com', 53, 'ms13'),
     new Intern('Matt Nutley', 'mn@gmail.com', 48, 'Alabama')
-]
+*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // The following code is the logic that will facilitate the input of
@@ -54,6 +55,8 @@ const enterEmployee = () => {
                 validate: function (input) {
                     if(isNaN(input)) {
                         return "Please enter an employee ID as a number."
+                    } else if (employeeRepository.some(emp => emp.getId() === input)) {
+                        return "This number is already taken! Please enter a unique employee ID."
                     } else {
                         return true
                     }
@@ -205,7 +208,6 @@ const createHTML = membersList => {
 
     fileManagement(htmlString)
 }
-
 const getIcon = (member) => {
     switch (member.getRole()) {
         case "Manager":
@@ -218,7 +220,6 @@ const getIcon = (member) => {
             break;
     }
 }
-
 const getThirdDetail = (member) => {
     switch (member.getRole()) {
         case "Manager":
@@ -231,7 +232,6 @@ const getThirdDetail = (member) => {
             break;
     }
 }
-
 const fileManagement = htmlArr => {
     fs.copyFile('./src/index.html', './dist/index.html', err => {
         if (err) throw err
@@ -245,5 +245,5 @@ const fileManagement = htmlArr => {
 }
 
 // this starts the code by receiving input for the manager
-//newManager()
-createHTML(employeeRepository)
+newManager()
+// createHTML(employeeRepository)
