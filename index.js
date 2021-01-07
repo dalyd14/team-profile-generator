@@ -2,6 +2,8 @@ const inquirer = require('inquirer')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
+const htmlParts = require('./src/template')
+const fs = require('fs')
 
 // this array will hold all of the team members
 const employeeRepository = [
@@ -178,9 +180,29 @@ const nextMember = (answer) => {
 // The following code is the logic that will create the HTML
 /////////////////////////////////////////////////////////////////////////////////////////////
 const createHTML = membersList => {
+    let htmlString = []
+    //htmlString.push(htmlParts.topHalf)
+
     membersList.forEach(member => {
-        
+        const memberCard = `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">${member.getName()}</h5>
+        <p class="card-text">${member.getRole()}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">${member.getId()}</li>
+        <li class="list-group-item">${member.getEmail()}</li>
+        <li class="list-group-item">Filler</li>
+    </ul>
+</div>`
+        htmlString.push(memberCard)
     });
+
+    htmlString.push(htmlParts.bottomHalf)
+
+    fs.appendFile('./src/index.html', htmlString.join(''), err => {
+        if (err) throw err
+    })        
 }
 
 // this starts the code by receiving input for the manager
