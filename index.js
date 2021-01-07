@@ -3,8 +3,20 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
-const employeeRepository = []
+// this array will hold all of the team members
+const employeeRepository = [
+    new Manager('Brian Spears', 'bs@gmail.com', 78, 41),
+    new Engineer('David Daly', 'dd@gmail.com', 45, 'dalyd14'),
+    new Engineer('PJ Taya', 'PT@gmail.com', 63, 'pj13'),
+    new Intern('Matt Nutley', 'mn@gmail.com', 48, 'Alabama')
+]
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+// The following code is the logic that will facilitate the input of
+// the team member information
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// these 4 functions hold the inquirer code to ask for the inputs from the user
 const enterEmployee = () => {
     return new Promise( (resolve) => {
         inquirer.prompt([
@@ -103,7 +115,7 @@ const enterIntern = () => {
         ).then( answers => resolve(answers))
     })
 }
-
+// the following 3 functions will create the employee objects
 const newManager = () => {
     console.log('Enter information about the Manager:')
     enterEmployee().then( empVal => {
@@ -134,7 +146,7 @@ const newIntern = () => {
         })
     })
 }
-
+// these two functions act as the logic for whether or not the user wants to add another member
 const enterAnotherMember = () => {
     return new Promise( resolve => {
         inquirer.prompt(
@@ -157,8 +169,20 @@ const nextMember = (answer) => {
             break;
         case 'I am done adding members':
         default:
+            createHTML(employeeRepository)
             break;
     }
 }
 
-newManager()
+/////////////////////////////////////////////////////////////////////////////////////////////
+// The following code is the logic that will create the HTML
+/////////////////////////////////////////////////////////////////////////////////////////////
+const createHTML = membersList => {
+    membersList.forEach(member => {
+        
+    });
+}
+
+// this starts the code by receiving input for the manager
+//newManager()
+createHTML(employeeRepository)
