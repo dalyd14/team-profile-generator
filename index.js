@@ -196,7 +196,7 @@ const createHTML = membersList => {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${member.getId()}</li>
                     <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></li>
-                    <li class="list-group-item">Email: ${getThirdDetail(member)}</li>
+                    <li class="list-group-item">GitHub: ${getThirdDetail(member)}</li>
                 </ul>
             </div>
         </div>`
