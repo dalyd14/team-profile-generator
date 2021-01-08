@@ -1,7 +1,9 @@
 # Team Roster Generator
 
-[Project Walkthrough](https://drive.google.com/file/d/1X5Vd4F1BEkC2OzyvejTr0YfzqQJDiVa3/view)
-[GitHub Repository](https://github.com/dalyd14/team-profile-generator)
+- [Project Walkthrough](https://drive.google.com/file/d/1X5Vd4F1BEkC2OzyvejTr0YfzqQJDiVa3/view)
+- [GitHub Repository](https://github.com/dalyd14/team-profile-generator)
+
+![Screenshot](./screenshot.PNG)
 
 ## Table of Contents
 - [Team Roster Generator](#team-roster-generator)
