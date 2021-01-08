@@ -4,13 +4,11 @@
 [GitHub Repository](https://github.com/dalyd14/team-profile-generator)
 
 ## Table of Contents
-- [Team Roster Generator](#team-roster-generator)
-  - [Table of Contents](#table-of-contents)
-  - [Project Description](#project-description)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Testing](#testing)
-  - [Questions](#questions)
+- [Project Description](#project-description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Questions](#questions)
 
 ## Project Description
 This is a command line app that allows a user to enter a team's members and have the roster be outputted as an HTML page.
