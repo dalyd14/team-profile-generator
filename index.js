@@ -2,7 +2,6 @@ const inquirer = require('inquirer')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
-const htmlParts = require('./src/template')
 const fs = require('fs')
 
 // this array will hold all of the team members
@@ -204,7 +203,10 @@ const createHTML = membersList => {
         htmlString.push(memberCard)
     });
 
-    htmlString.push(htmlParts.bottomHalf)
+    htmlString.push(`    
+    </section>
+</body>
+</html>`)
 
     fileManagement(htmlString)
 }
@@ -235,12 +237,9 @@ const getThirdDetail = (member) => {
 const fileManagement = htmlArr => {
     fs.copyFile('./src/index.html', './dist/index.html', err => {
         if (err) throw err
-        fs.copyFile('./src/style.css', './dist/style.css', err => {
+        fs.appendFile('./dist/index.html', htmlArr.join(''), err => {
             if (err) throw err
-            fs.appendFile('./dist/index.html', htmlArr.join(''), err => {
-                if (err) throw err
-            })              
-        }) 
+        })              
     })
 }
 
